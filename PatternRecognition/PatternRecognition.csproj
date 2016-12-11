@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{311CE444-E07F-4827-AA55-2628959B39AC}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PatternRecognition</RootNamespace>
+    <AssemblyName>PatternRecognition</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>True</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddPatternForm.cs" />
+    <Compile Include="AddPatternForm.Designer.cs">
+      <DependentUpon>AddPatternForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NeuralNetworks\Networks\HopfieldNetwork.cs" />
+    <Compile Include="NeuralNetworks\Networks\MultiLayerNetwork.cs" />
+    <Compile Include="NeuralNetworks\Networks\NetworkLayer.cs" />
+    <Compile Include="NeuralNetworks\NeuralNetworksUtils.cs" />
+    <Compile Include="NeuralNetworks\Neurons\ActivationFunction.cs" />
+    <Compile Include="NeuralNetworks\Neurons\Neuron.cs" />
+    <Compile Include="NeuralNetworks\Neurons\Perceptron.cs" />
+    <Compile Include="NeuralNetworks\Neurons\MemoryNeuron.cs" />
+    <Compile Include="NeuralNetworks\Teaching\PatternDictionary.cs" />
+    <Compile Include="PatternRecognitionCommons.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NeuralNetworks\Teaching\TeachingPair.cs" />
+    <Compile Include="NeuralNetworks\Teaching\TeachingUtils.cs" />
+    <Compile Include="NeuralNetworks\Teaching\NetworkTeachingPair.cs" />
+    <Compile Include="Tools\ArrayExtensions.cs" />
+    <Compile Include="Tools\CollectionExtensions.cs" />
+    <Compile Include="UI\LabelTable.cs" />
+    <Compile Include="UI\UIExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NeuralNetworks\Networks" />
+    <Folder Include="NeuralNetworks\Neurons" />
+    <Folder Include="NeuralNetworks" />
+    <Folder Include="NeuralNetworks\Teaching" />
+    <Folder Include="UI" />
+    <Folder Include="Tools" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddPatternForm.resx">
+      <DependentUpon>AddPatternForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
